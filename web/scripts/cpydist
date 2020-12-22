@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# Build the distribution files
+yarn --cwd /Users/troygaylord/Documents/PlatformIO/Projects/speed-master/web/ build
+
+# Remove old files from our 'data' folder in the ESP32 project.
+rm -f /Users/troygaylord/Documents/PlatformIO/Projects/speed-master/esp32/data/*
+
+# Copy the app.js (a.bin) and favicon.ico (b.bin) to the ESP32 projects 'data' folder.
+cp -R -f /Users/troygaylord/Documents/PlatformIO/Projects/speed-master/web/dist/app.js /Users/troygaylord/Documents/PlatformIO/Projects/speed-master/esp32/data/a.bin
+cp -R -f /Users/troygaylord/Documents/PlatformIO/Projects/speed-master/web/dist/favicon.ico /Users/troygaylord/Documents/PlatformIO/Projects/speed-master/esp32/data/b.bin
+# index.html is served up directly from the internal memory of the esp32.
+
+# Gzip the app.js and favicon.ico files.
+gzip -f --best /Users/troygaylord/Documents/PlatformIO/Projects/speed-master/esp32/data/*.bin
+
+echo
+# Display the size of our new gzip'ed data (SPIFF) folder.
+du -sh /Users/troygaylord/Documents/PlatformIO/Projects/speed-master/esp32/data

@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.cpp": "cpp",
+			"*.h": "cpp",
+			"*.ino": "cpp",
+			"functional": "cpp",
+			"istream": "cpp",
+			"*.tcc": "cpp",
+			"*.tpp": "cpp",
+			"ratio": "cpp"
+		}
+	}
+}
